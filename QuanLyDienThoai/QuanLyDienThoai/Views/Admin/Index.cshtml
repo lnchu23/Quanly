@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    @* Chèn link css template có sẵn *@
+    <link href="~/Content/style.css" rel="stylesheet" />
+</head>
+<body>
+    
+    <div id="background">
+        <div id="page">
+            <div id="header">
+                <div id="navigation">
+                    <ul>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li>@Html.ActionLink("Home", "Index", "Admin")</li>
+                                <li>@Html.ActionLink("Quản lý nhà sản xuất", "Index", "Brand")</li>
+                                <li>@Html.ActionLink("Quản lý sản phẩm", "Index", "Product")</li>
+                            </ul>
+                        </div>
+
+                    </ul>
+                </div>
+            </div>
+            <div id="contents">
+
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
+

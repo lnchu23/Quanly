@@ -1,0 +1,97 @@
+﻿
+@model IEnumerable<QuanLyDienThoai.Models.product_detail>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    table.table {
+        width: 1000px;
+        margin: 20px 20px 20px 190px;
+        border: 1px solid black; 
+        box-shadow:2px 2px 2px 2px gray;
+    
+</style>
+
+@if (Model == null)
+{
+    <br />
+    <br />
+    <h1 class="text-info text-center">
+        Giõ Hàng Của Bạn Rỗng
+    </h1>
+}
+else
+{
+    <br />
+    <br />
+  
+        <table class="table" >
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.name_product)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.images)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.quantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Thanhtien)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.name_product)
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.price)
+                    </td>
+                    <td>
+                        <img src="@Url.Content("~/img/"+item.images)" width="100" height="120" />
+                    </td>
+                    <td>
+                        @using (Html.BeginForm("CapNhapGioHang", "Shopping", new { @id = item.id_product }))
+                        {
+                            <input type="hidden" name="Masach" value="@item.id_product" />
+                            <input type="number" min="1" step="1" name="txtsoluong" value="@item.quantity" />
+                            <button type="submit" class="btn btn-primary btn-sm">Cap nhat</button>
+                        }
+                    </td>
+                    <td>
+                        @item.Thanhtien.ToString("#,##0").Replace(',', '.') VND
+
+                    </td>
+                    <td>
+                        <a href="@Url.Action("RemoveItem",new {id=item.id_product})"
+                           onclick=" return confirm(" Ban co chac muon xoa san pham nay ?") ;"
+                           class="btn btn-danger btn-sm">Xoa</a>
+                    </td>
+
+                </tr>
+            }
+            <tr>
+                <td></td>
+                <td class="text-right">Tổng số lượng  </td>
+                <td> @Model.Sum(m => m.quantity) </td>
+                <td class="text-right">Tổng Tiền</td>
+                <td>@Model.Sum(m => m.Thanhtien).ToString("#,##0").Replace(',', '.') VND</td>
+            </tr>
+
+
+        </table>
+
+}
+
+
+

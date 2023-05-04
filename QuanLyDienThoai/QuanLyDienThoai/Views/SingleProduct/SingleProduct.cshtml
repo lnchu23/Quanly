@@ -1,0 +1,86 @@
+﻿@model QuanLyDienThoai.Models.product
+
+@{
+    ViewBag.Title = "Index";
+}
+<link rel="stylesheet" href="~/Content/css/style2.css">
+<style>
+    .product-bit-title h2 {
+        padding: 14px 0;
+        font-size:35px;
+    }
+    .product_img_big {
+        width: 400px;
+        margin: 0px 0px 0px 0px;
+    }
+    .center_prod_box_big {
+        display: flex;
+        margin: 30px 30px 30px 168px;
+    }
+    .product_title_big {
+        font-size: 29px;
+    }
+  
+    .details_big_box {
+        margin: 0px 0px 0 150px;
+    }
+    .specifications {
+        height: 270px;
+        width: 453px;
+        font-size:17px;
+        word-break:break-word;
+    }
+    .col-xs-12.cpl-md-6 {
+        padding: 0;
+    }
+    .col-xs-12.col-md-6 {
+        padding: 0;
+    }
+
+</style>
+
+<div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>Chi tiết sản phẩm</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@if (Model == null)
+{
+    <div class="center_title_bar">Sản phẩm không tồn tại</div>
+
+}
+else
+{
+    <div class="center_prod_box_big">
+        <div class="product_img_big">
+            <a href="javascript:popImage('images/big_pic.jpg','Some Title')" title="header=[Zoom] body=[&nbsp;] fade=[on]"><img src="~/img/@Model.images" alt="" border="0"></a>
+            <div class="thumbs"> <a href="#" title="header=[Thumb1] body=[&nbsp;] fade=[on]"><img src="images/thumb1.jpg" alt="" border="0"></a> <a href="#" title="header=[Thumb2] body=[&nbsp;] fade=[on]"><img src="images/thumb2.jpg" alt="" border="0"></a> <a href="#" title="header=[Thumb3] body=[&nbsp;] fade=[on]"><img src="images/thumb1.jpg" alt="" border="0"></a> </div>
+        </div>
+        <div class="details_big_box">
+            <div class="product_title_big">@Model.name_product</div>
+            <div class="specifications">
+                Thông tin: <span class="blue">@Model.description</span><br>
+
+            </div>
+            <div class="prod_price_big"><span class="price">Giá niêm yết: @Model.price.ToString("#,##0").Replace(',', '.')VND</span></div>
+            <p></p>
+            <div class="col-xs-12 col-md-6">
+                <div class="col-xs-12 cpl-md-6">
+                    <a class="btn btn-success" href="@Url.Action("AddToCart","Shopping" , new {id=Model.id_product})">Đặt hàng</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}
+<p>
+    @* @Html.ActionLink("AddToCart", "Shopping", new { id = Model.id_product }) |*@
+    
+</p>

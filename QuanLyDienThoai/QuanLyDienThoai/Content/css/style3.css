@@ -1,0 +1,92 @@
+﻿@-webkit-keyframes my {
+    0% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    75% {
+        opacity: 0.9;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes my {
+    0% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+
+    75% {
+        opacity: 0.9;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes my {
+    0% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+
+    75% {
+        opacity: 0.9;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes my {
+    V 0% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+
+    75% {
+        opacity: 0.9;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+img.anh2 {
+    -webkit-animation: my 2000ms infinite;
+    -moz-animation: my 2000ms infinite;
+    -o-animation: my 2000ms infinite;
+    animation: my 2000ms infinite;
+}

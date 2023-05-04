@@ -1,0 +1,153 @@
+﻿@model IEnumerable<QuanLyDienThoai.Models.product>
+
+@{
+
+    ViewBag.Title = "Home Page";
+}
+<style>
+    .text-wrap.p-3 {
+        height: 20px;
+        margin: 20px 0px;
+    }
+
+    .col-xs-12.col-md-6 {
+        display: flex;
+        justify-content: center;
+    }
+    .owl-carousel .owl-item img {
+        display: flex;
+        padding: 10px
+    }
+    .brand-wrapper .owl-carousel .owl-item a img {
+        display: flex;
+        width: 50%;
+        height:80px;
+    }
+    .section-title {
+        font-family: "Raleway",sans-serif;
+        font-size: 50px;
+        font-weight: 100;
+        margin-bottom: 50px;
+        text-align: center;
+        color: black;
+    }
+     img {
+        position:relative;
+        display: block;
+        transition: all .3s ease;
+    }
+
+        img:hover {
+            transform: scale(1.1); /* cỡ zoom khi di chuột vào */
+        }
+
+</style>
+
+<div class="slider-area6">
+    <!-- Slider -->
+    <div class="block-slider block-slider4">
+        <ul class="" id="bxslider-home4">
+            <li>
+                <img src="~/img/h4-slide.png" alt="Slide">
+                <div class="caption-group">
+                    <h2 class="caption title">
+                        iPhone <span class="primary">6 <strong>Plus</strong></span>
+                    </h2>
+                    <h4 class="caption subtitle">Dual SIM</h4>
+                    <a class="caption button-radius" href="#"><span class="icon"></span>Shop now</a>
+                </div>
+            </li>
+            <li>
+                <img src="~/img/h4-slide2.png" alt="Slide">
+                <div class="caption-group">
+                    <h2 class="caption title">
+                        by one, get one <span class="primary">50% <strong>off</strong></span>
+                    </h2>
+                    <h4 class="caption subtitle">school supplies & backpacks.*</h4>
+                    <a class="caption button-radius" href="#"><span class="icon"></span>Shop now</a>
+                </div>
+            </li>
+            <li>
+                <img src="~/img/h4-slide3.png" alt="Slide">
+                <div class="caption-group">
+                    <h2 class="caption title">
+                        Apple <span class="primary">Store <strong>Ipod</strong></span>
+                    </h2>
+                    <h4 class="caption subtitle">Select Item</h4>
+                    <a class="caption button-radius" href="#"><span class="icon"></span>Shop now</a>
+                </div>
+            </li>
+            <li>
+                <img src="~/img/h4-slide4.png" alt="Slide">
+                <div class="caption-group">
+                    <h2 class="caption title">
+                        Apple <span class="primary">Store <strong>Ipod</strong></span>
+                    </h2>
+                    <h4 class="caption subtitle">& Phone</h4>
+                    <a class="caption button-radius" href="#"><span class="icon"></span>Shop now</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- ./Slider -->
+</div> <!-- End slider area -->
+
+<div class="brands-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="section-title">Brand</h2>
+                <div class="brand-wrapper">
+                    <div class="brand-list">
+
+                        <a href="/?brandID=1"><img src="~/img/iphone.jpg" alt=""></a>
+                        <a href="/?brandID=2"><img src="~/img/samsung.jpg" alt=""></a>
+                        <a href="/?brandID=3">
+                            <img src="~/img/oppo.jpg" alt=""></aid="brand-img">
+                            <a href="/?brandID=4"><img src="~/img/Vivo-brand.jpg" alt=""></a>
+                            <a href="/?brandID=5"><img src="~/img/brand1.png" alt=""></a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="maincontent-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="latest-product">
+                    <h2 class="section-title">Latest Products</h2>
+                    <div class="product-carousel">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-md col-6">
+                                <figure class="card-product-grid card-sm">
+                                    <a href="@Url.Action("Singleproduct","Singleproduct", new {id=item.id_product})" class="img-wrap">
+                                        <img src="~/img/@item.images" />
+                                    </a>
+                                    <div class="text-wrap p-3">
+                                        <a href="#" class="title">@item.name_product</a>
+
+                                    </div>
+                                    <div class="text-wrap p-1">
+                                        <a href="#" class="aligncenter">Price: @item.price.ToString("#,##0").Replace(',', '.') VND</a>
+                                        <p></p>
+                                        <div class="col-xs-12 col-md-6">
+                                            <a class="btn btn-success" href="@Url.Action("AddToCart","Shopping" , new {id=item.id_product})">Đặt hàng</a>
+                                        </div>
+                                    </div>
+                                </figure>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End main content area -->

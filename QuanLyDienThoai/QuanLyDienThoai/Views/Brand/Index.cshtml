@@ -1,0 +1,122 @@
+﻿@model IEnumerable<QuanLyDienThoai.Models.Brand>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    @* Chèn link css template có sẵn *@
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <style>
+        div#navigation {
+            display: flex;
+            justify-content: center;
+        }
+        p.themmoi {
+            padding: 0 90px;
+        }
+        .themmoi a {
+            background-color: forestgreen;
+            color: whitesmoke;
+            padding: 10px 10px;
+        }
+        table.table {
+            margin: 0 190px;
+            width: 70%;
+            background-color: #FFFFCC;
+        }
+        .themmoi a:hover {
+            background-color: white;
+            color: forestgreen;
+            text-decoration: none;
+        }
+        div#contents {
+            margin-bottom: 50px;
+        }
+        .btn-xuly a{
+            background-color:red;
+            color:white;
+            padding:7px;
+            text-decoration:none;
+        }
+            .btn-xuly a:hover {
+                background-color: #FFFFCC;
+                color: black;
+                padding: 7px;
+                text-decoration: none;
+            }
+        </style>
+</head>
+<body>
+    <div id="background">
+        <div id="page">
+            <div id="header">
+                <div id="navigation">
+                    <ul>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li>@Html.ActionLink("Quản lý nhà sản xuất", "Index", "Brand")</li>
+                                <li>@Html.ActionLink("Quản lý sản phẩm", "Index", "Product")</li>
+                            </ul>
+                        </div>
+
+                    </ul>
+                </div>
+            </div>
+            <div id="contents">
+                <p class="themmoi">
+                    @Html.ActionLink("Create New", "Create")
+                </p>
+
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.id_brand)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.name_brand)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.images_brand)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.id_brand)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.name_brand)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.images_brand)
+                    </td>
+                    <td>
+                        <div class="btn-xuly">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.id_brand })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.id_brand })
+                        </div>
+                    </td>
+                </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+
+
+
